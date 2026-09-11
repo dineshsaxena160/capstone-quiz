@@ -9,6 +9,7 @@ describe('quiz prompt composition', () => {
     expect(prompt).toContain(SYSTEM_INSTRUCTION);
     expect(prompt).toContain('Topic: JavaScript.');
     expect(prompt).toContain('four beginner, four intermediate, and two advanced');
+    expect(prompt).toContain('top-level keys must be exactly topic and questions');
     expect(prompt).not.toContain('chain-of-thought');
   });
 

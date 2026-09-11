@@ -23,7 +23,7 @@ npm run test:accessibility
 npm run build
 ```
 
-Set `GOOGLE_API_KEY`, `GOOGLE_MODEL`, `CLIENT_ORIGIN`, and `PORT` in `backend/.env`. Use a Google model that supports structured output; the provided configuration uses `gemini-3.6-flash`. Set only `VITE_API_BASE_URL` in `frontend/.env`.
+Set `GOOGLE_API_KEY`, `GOOGLE_MODEL`, `CLIENT_ORIGIN`, and `PORT` in `backend/.env`. The provided configuration uses the Gemma 4 26B instruction-tuned model `gemma-4-26b-a4b-it`. The Google AI Studio project behind the key must have the Generative Language API enabled and available `generateContent` quota (a free-tier quota limit can temporarily block generation). Set only `VITE_API_BASE_URL` in `frontend/.env`.
 
 Run the API and client in separate terminals:
 

@@ -80,10 +80,15 @@ export function providerError(error: unknown): OperationalError {
   if (status === 408 || status === 504) {
     return new OperationalError('timeout', { status: 504, cause: error });
   }
-  if (status === 429) {
+  if (status === 429 || hasRateLimitMessage(error)) {
     return new OperationalError('rate_limit', { status: 429, cause: error });
   }
   return new OperationalError('provider', { status: 502, cause: error });
+}
+
+function hasRateLimitMessage(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  return /quota|rate[\s_-]?limit|resource exhausted|too many requests/i.test(error.message);
 }
 
 function readStatus(error: unknown): number | undefined {

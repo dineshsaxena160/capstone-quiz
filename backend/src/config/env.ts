@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const environmentSchema = z.object({
   GOOGLE_API_KEY: z.string().trim().min(1).optional(),
-  GOOGLE_MODEL: z.string().trim().min(1).default('gemini-3.6-flash'),
+  GOOGLE_MODEL: z.string().trim().min(1).default('gemma-4-26b-a4b-it'),
   CLIENT_ORIGIN: z.string().url().default('http://localhost:5173'),
   PORT: z.coerce.number().int().min(1).max(65_535).default(3001),
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),

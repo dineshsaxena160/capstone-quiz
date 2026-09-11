@@ -82,7 +82,7 @@ description: "Implementation task list for the AI Powered Technical Quiz App"
 - [X] T029 [US1] Implement complete-set generation orchestration that invokes the provider and rejects invalid output as a whole in `backend/src/quiz/generateQuiz.ts`
 - [X] T030 [US1] Implement the validated topic controller and `POST /api/quiz/generate` route using the injected generator in `backend/src/api/quizRoutes.ts` and `backend/src/app.ts`
 - [X] T031 [P] [US1] Implement the typed client API request that sends only an allowlisted topic and revalidates the received learner-safe quiz in `frontend/src/services/quizApi.ts`
-- [X] T032 [P] [US1] Build the accessible application shell, semantic landmarks, focus baseline, and responsive global styles in `frontend/src/main.tsx`, `frontend/src/App.tsx`, and `frontend/src/styles/index.css`
+- [X] T032 [US1] Build the accessible application shell, semantic landmarks, focus baseline, and responsive global styles in `frontend/src/main.tsx`, `frontend/src/App.tsx`, and `frontend/src/styles/index.css`
 - [X] T033 [US1] Implement the single-select topic control and disabled-until-selected Start Quiz screen in `frontend/src/pages/TopicSelectionPage.tsx`
 - [X] T034 [P] [US1] Implement the topic-aware generation status screen with a polite live region and no internal composition details in `frontend/src/components/LoadingState.tsx` and `frontend/src/pages/GeneratingPage.tsx`
 - [X] T035 [US1] Extend the reducer and app orchestration with topic replacement, request-ID duplicate suppression, and valid-response session initialization in `frontend/src/app/reducer.ts` and `frontend/src/App.tsx`
@@ -216,7 +216,7 @@ flowchart LR
 
 - After T001 and T002, T003 through T008 can proceed in parallel where their package/configuration files do not overlap.
 - T010 through T012, T014, T015, T018, and T019 are separate foundational modules that can proceed in parallel once their package scaffolds exist.
-- The test tasks marked `[P]` in each story use distinct files and can be authored concurrently before implementation.
+- The test tasks marked `[P]` in each story use distinct files and can be authored concurrently before implementation tasks.
 - The provider adapter, prompt builder, semantic validator, client API service, and initial shell in US1 are independent file slices after their test seams are defined.
 - US4 backend and client error mapping can proceed in parallel after the shared retry policy is available.
 - The Phase 7 CI, deployment, documentation, smoke command, browser, API security, and accessibility work can proceed in parallel except where they update the same configuration file.
@@ -289,4 +289,4 @@ Task: "Implement client timeout and error mapping in frontend/src/services/quizA
 - `[P]` marks tasks that can run in parallel after their stated prerequisites and do not modify the same files.
 - Story labels map directly to the four user stories in `spec.md`.
 - No task introduces persistence, authentication, a database, a fallback question bank, or a client-visible provider secret.
-- The live provider smoke command is intentionally separate from secret-free CI and must use the exact configured `gemini-3.6-flash` identifier without a fallback model.
+- The live provider smoke command is intentionally separate from secret-free CI and must use the exact configured `gemma-4-26b-a4b-it` identifier without a fallback model.

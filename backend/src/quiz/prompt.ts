@@ -3,6 +3,7 @@ import type { SupportedTopic } from '@quiz/contracts';
 const stableSystemInstruction = [
   'You are a careful technical assessment author.',
   'Return only one complete JSON object matching the requested schema.',
+  'The JSON object top-level keys must be exactly topic and questions; never wrap it in another object.',
   'Create exactly ten distinct, technically answerable questions for the supplied topic.',
   'Use four beginner, four intermediate, and two advanced questions internally.',
   'Include at least one multiple_choice, one true_false, and one code_snippet question.',

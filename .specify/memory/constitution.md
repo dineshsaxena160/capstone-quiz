@@ -24,8 +24,8 @@ MUST keep quiz questions and answers in memory for the active tab and MUST NOT
 add accounts, history, rankings, recommendations, or persistence without a
 separate product decision. A stateless Node/Express provider gateway MAY be
 used to protect provider credentials, but it MUST NOT create quiz sessions,
-persist learner data, or become a second source of quiz state. This preserves a
-fast, transparent experience while allowing the provider boundary to evolve.
+persist learner data, or become a second source of quiz state. This preserves
+a fast, transparent experience while allowing the provider boundary to evolve.
 
 ### II. Validated, Bounded AI Content
 The configured Google AI Studio model MUST be accessed through a LangChain
@@ -80,7 +80,7 @@ explicit justification and approval.
 	arbitrary topic text, multi-topic attempts, and learner-entered prompt data.
 - Google AI Studio configuration MUST be read through one typed API environment
 	module using `GOOGLE_API_KEY` and `GOOGLE_MODEL`, with the requested
-	`gemini-3.6-flash` value supplied through deployment configuration. The client
+	`gemma-4-26b-a4b-it` value supplied through deployment configuration. The client
 	MUST use a separate typed `VITE_API_BASE_URL` value. Placeholder-only
 	`.env.example` files MUST be committed, `.env` files MUST be ignored, and
 	keys MUST never appear in source, logs, screenshots, tests, or committed build

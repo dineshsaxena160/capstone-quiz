@@ -37,9 +37,9 @@
 
 ## Requested model identifier
 
-**Decision:** Use `gemini-3.6-flash` as the configured `GOOGLE_MODEL` value because it supports the structured-output provider path. Add a provider smoke test and startup/configuration diagnostic that confirms the configured model can be reached through the selected Google AI Studio path before release.
+**Decision:** Use `gemma-4-26b-a4b-it` as the configured `GOOGLE_MODEL` value because it is the requested Gemma 4 26B instruction-tuned deployment and supports the provider path. Add a provider smoke test and startup/configuration diagnostic that confirms the configured model can be reached through the selected Google AI Studio path before release.
 
-**Rationale:** This preserves the exact model requested by the user while acknowledging a provider risk. Current Google documentation describes Gemma 4 as open model weights with deployment paths such as Kaggle, Hugging Face, and hosted serving, while the current Google AI Studio model catalog does not establish this exact Gemma identifier as a hosted model name. The application must surface a safe configuration/provider error if the selected API path rejects it.
+**Rationale:** This preserves the exact model requested by the user while keeping model selection explicit at the provider boundary. The application must surface a safe configuration/provider error if the selected API path rejects the configured deployment.
 
 **Alternatives considered:**
 

@@ -6,7 +6,7 @@ import { QuizValidationError } from '../../src/quiz/validateQuiz.js';
 import type { QuizProvider } from '../../src/provider/types.js';
 
 const environment = loadEnvironment({
-  GOOGLE_MODEL: 'gemma-4-26b-a4b',
+  GOOGLE_MODEL: 'gemma-4-26b-a4b-it',
   CLIENT_ORIGIN: 'http://localhost:5173',
   PORT: '3001',
   NODE_ENV: 'test',

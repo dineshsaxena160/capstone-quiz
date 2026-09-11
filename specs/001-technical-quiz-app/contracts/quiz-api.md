@@ -125,4 +125,4 @@ The server maps provider errors before serialization. It never returns raw Gemin
 - Credentials are disabled; the product has no cookies or login.
 - Only the required `POST /api/quiz/generate` and `GET /health` methods are exposed.
 - `GOOGLE_API_KEY` and `GOOGLE_MODEL` exist only in the backend environment.
-- The configured `GOOGLE_MODEL` must be provider-smoke-tested as `gemini-3.6-flash` before release. An unavailable model produces a safe configuration/provider error; no alternate model is selected automatically.
+- The configured `GOOGLE_MODEL` must be provider-smoke-tested as `gemma-4-26b-a4b-it` before release. An unavailable model produces a safe configuration/provider error; no alternate model is selected automatically.

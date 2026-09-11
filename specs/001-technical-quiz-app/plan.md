@@ -2,7 +2,7 @@
 
 **Branch**: `001-technical-quiz-app` | **Date**: 2026-09-10 | **Spec**: [spec.md](spec.md)
 
-**Input**: Feature specification from `/specs/001-technical-quiz-app/spec.md`, product requirements from `/PRD.md`, and the user-specified stack: React + TypeScript frontend, Node.js + Express API, LangChain, Google AI Studio, and `gemini-3.6-flash`.
+**Input**: Feature specification from `/specs/001-technical-quiz-app/spec.md`, product requirements from `/PRD.md`, and the user-specified stack: React + TypeScript frontend, Node.js + Express API, LangChain, Google AI Studio, and `gemma-4-26b-a4b-it`.
 
 ## Summary
 
@@ -42,7 +42,7 @@ The constitution was amended from 1.0.0 to 1.1.0 before this plan to authorize t
 - **IV. Accessible, Responsive Clarity: PASS.** The screen and component plan includes semantic single-select controls, managed focus, live status/error regions, bounded code, visible focus, and 320 px checks.
 - **V. Test-Gated Simplicity: PASS WITH JUSTIFICATION.** The requested API and LangChain boundary are required by the user input and are limited to one stateless generation route; focused server, client, contract, and browser tests gate the added surface.
 - **Security constraints: PASS.** `GOOGLE_API_KEY` stays in the API environment, `VITE_API_BASE_URL` is the only client service configuration, CORS and rate limiting are explicit, and no quiz data is persisted.
-- **Model availability gate: PASS WITH RELEASE CHECK.** `gemini-3.6-flash` is the configured Google AI Studio model and supports the structured-output provider path. A provider smoke test remains mandatory, and the application must fail with a safe configuration/provider error rather than silently choose another model.
+- **Model availability gate: PASS WITH RELEASE CHECK.** `gemma-4-26b-a4b-it` is the configured Google AI Studio model and supports the provider path. A provider smoke test remains mandatory, and the application must fail with a safe configuration/provider error rather than silently choose another model.
 
 ## Project Structure
 
@@ -69,6 +69,7 @@ frontend/
 ├── index.html
 ├── vite.config.ts
 ├── tailwind.config.ts
+├── postcss.config.js
 ├── src/
 │   ├── main.tsx
 │   ├── App.tsx

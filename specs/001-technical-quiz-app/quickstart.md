@@ -6,7 +6,7 @@ This guide validates the planned React client, Express API, LangChain provider b
 
 - Node.js 20 LTS and npm
 - A Google AI Studio API key for the live smoke test only
-- A provider account/model deployment that accepts the configured structured-output model identifier `gemini-3.6-flash`
+- A provider account/model deployment that accepts the configured model identifier `gemma-4-26b-a4b-it`
 - A browser with JavaScript enabled for the Playwright flow
 
 The CI and local mock test suites must pass without an API key.
@@ -31,7 +31,7 @@ Set values locally, without committing them:
 ```text
 backend/.env
 GOOGLE_API_KEY=developer-configured-secret
-GOOGLE_MODEL=gemini-3.6-flash
+GOOGLE_MODEL=gemma-4-26b-a4b-it
 CLIENT_ORIGIN=http://localhost:5173
 PORT=3001
 
@@ -91,7 +91,7 @@ npm run smoke:provider
 Expected outcome:
 
 - The command reaches Google AI Studio through the LangChain adapter.
-- The configured `gemini-3.6-flash` identifier is accepted by the selected provider path.
+- The configured `gemma-4-26b-a4b-it` identifier is accepted by the selected provider path.
 - A small structured-output probe succeeds without printing the API key, full prompt, or response body.
 
 If the provider rejects the identifier, the command must fail clearly and the application must remain in a safe configuration/provider error state. Do not change to another model silently; resolve provider deployment/configuration explicitly.

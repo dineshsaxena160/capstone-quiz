@@ -6,7 +6,7 @@ import { loadEnvironment } from '../../src/config/env.js';
 import type { QuizProvider } from '../../src/provider/types.js';
 
 const environment = loadEnvironment({
-  GOOGLE_MODEL: 'gemma-4-26b-a4b',
+  GOOGLE_MODEL: 'gemma-4-26b-a4b-it',
   CLIENT_ORIGIN: 'http://localhost:5173',
   PORT: '3001',
   NODE_ENV: 'test',
@@ -21,6 +21,29 @@ const limits = {
 };
 
 describe('generation API failures', () => {
+  it('maps quota exhaustion to a retryable rate-limit envelope', async () => {
+    const provider: QuizProvider = {
+      generate: vi.fn().mockRejectedValue(
+        new Error('You exceeded your current quota for generate_content_free_tier_requests.'),
+      ),
+    };
+    const response = await request(createApp({ environment, provider, limits }))
+      .post('/api/quiz/generate')
+      .set('X-Request-Id', 'failure-quota')
+      .send({ topic: 'JavaScript' });
+
+    expect(response.status).toBe(429);
+    expect(response.body).toEqual({
+      error: {
+        code: 'rate_limit',
+        message: 'The quiz service is busy. Please wait a moment and try again.',
+        retryable: true,
+        requestId: 'failure-quota',
+      },
+    });
+    expect(JSON.stringify(response.body)).not.toContain('generate_content_free_tier_requests');
+  });
+
   it('maps provider authorization failures to a safe envelope', async () => {
     const provider: QuizProvider = {
       generate: vi.fn().mockRejectedValue(Object.assign(new Error('secret provider payload'), { status: 401 })),
