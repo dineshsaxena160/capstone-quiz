@@ -1,0 +1,17 @@
+{
+  "name": "technical-quiz-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@quiz/contracts": "file:../packages/contracts",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
